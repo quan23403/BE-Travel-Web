@@ -1,5 +1,6 @@
 package com.example.Travel_web.BE.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,6 +25,7 @@ public class Itinerary {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "tour_id", nullable = false)
     private Tour tour;

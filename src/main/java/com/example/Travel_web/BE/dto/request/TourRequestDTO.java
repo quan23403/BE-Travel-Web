@@ -12,8 +12,8 @@ import java.util.List;
 @Getter
 @Setter
 public class TourRequestDTO {
-  private TourDTO tour;
+  private TourDTO tourInfo;
   private List<ScheduleDTO> schedules;
-  private List<ItineraryDTO> itinerarys;
-  private List<FaqDTO> faqs;
+  private List<ItineraryDTO> itinerary;
+  private List<FaqDTO> faq;
 }

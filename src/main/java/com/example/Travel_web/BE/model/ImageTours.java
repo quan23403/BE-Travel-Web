@@ -2,27 +2,26 @@ package com.example.Travel_web.BE.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "faqs")
+@Table(name = "images_tour")
 @Getter
 @Setter
-public class Faq {
+public class ImageTours {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "question", columnDefinition = "TEXT", nullable = false)
-    private String question;
+    @Column(name = "path", nullable = false)
+    private String path;
 
-    @Column(name = "answer", columnDefinition = "TEXT", nullable = false)
-    private String answer;
+    @Column(name = "image_name", nullable = false)
+    private String imageName;
 
     @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "tour_id", nullable = false)
+    @JoinColumn(name = "tour_id", nullable = false)  // Khóa ngoại tham chiếu đến Tour
     private Tour tour;
 }

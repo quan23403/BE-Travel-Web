@@ -3,6 +3,7 @@ package com.example.Travel_web.BE.model;
 import com.example.Travel_web.BE.enums.Level;
 import com.example.Travel_web.BE.enums.Status;
 import com.example.Travel_web.BE.enums.TourDuration;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,6 +30,9 @@ public class Tour {
     @Column(name = "end_location", nullable = false)
     private String endLocation;
 
+    @Column(name = "thumbnail_url")
+    private String thumbnailUrl;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private TourDuration duration;
@@ -39,7 +43,7 @@ public class Tour {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "travel_type", nullable = false)
+    @Column(name = "travel_type")
     private String travelType;
 
     @Enumerated(EnumType.STRING)
@@ -77,6 +81,9 @@ public class Tour {
     // Quan hệ 1-N với Faq
     @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL)
     private List<Faq> faqs;
+
+    @OneToMany(mappedBy = "tour", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImageTours> imageTours;  // Mối quan hệ 1-N với ImageTour
 
     @PrePersist
     protected void onCreate() {
